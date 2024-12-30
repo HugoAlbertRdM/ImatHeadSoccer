@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e601b2f0d9dec458eb065f869103e5, type: 3}
   m_Name: Jackson
   m_EditorClassIdentifier: 
-  footballPlayer: {fileID: 0}
-  image: {fileID: 0}
-  name: 
+  footballPlayer: {fileID: 1847402739957021000, guid: 7e90ccb5b4cfdcd4faffbc85d13dd8c1, type: 3}
+  image: {fileID: 21300000, guid: 4477d1f7357fd9b41abed94f049d8e51, type: 3}
+  name: Jackson

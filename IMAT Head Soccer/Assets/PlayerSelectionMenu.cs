@@ -60,6 +60,11 @@ public class CharacterSelectionMenu : MonoBehaviour
         ChangeScreen();
     }
 
+    public void SelectPlayer1()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
