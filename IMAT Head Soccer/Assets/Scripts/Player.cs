@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private Ball ballScript;
     private Animator animator;
 
+    [SerializeField] private GameObject headObject;  // Referencia a la cabeza para cambiar el sprite
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +29,16 @@ public class PlayerController : MonoBehaviour
         ballGameObject = GameObject.FindWithTag("Ball");
         ballScript = ballGameObject.GetComponent<Ball>();
         animator = GetComponent<Animator>();
+
+        // Cambiar la cabeza según la selección del jugador
+        if (GameManager.Instance != null && GameManager.Instance.selectedHeadSprite != null)
+        {
+            SpriteRenderer headRenderer = headObject.GetComponent<SpriteRenderer>();
+            headRenderer.sprite = GameManager.Instance.selectedHeadSprite;
+        }
     }
 
     // Update is called once per frame
-    // Actualize with events
     void Update()
     {
         // Movement
@@ -66,7 +74,6 @@ public class PlayerController : MonoBehaviour
     bool IsNearBall()
     {
         float distance = Vector2.Distance(shoe.transform.position, ballGameObject.transform.position);
-
         return distance < proximityThreshold;
     }
 }

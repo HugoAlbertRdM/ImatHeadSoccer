@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Head : MonoBehaviour
 {
-    private Sprite actualSprite;
-    // Start is called before the first frame update
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
-        
-    }
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Verifica si hay un sprite seleccionado y lo aplica
+        if (GameManager.Instance != null && GameManager.Instance.selectedHeadSprite != null)
+        {
+            spriteRenderer.sprite = GameManager.Instance.selectedHeadSprite;
+        }
     }
 }
+
+

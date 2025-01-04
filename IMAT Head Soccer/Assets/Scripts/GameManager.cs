@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public List<Players> players;
+    public Sprite selectedHeadSprite;  // Añadir esta línea
 
     private void Awake()
     {
@@ -20,3 +21,4 @@ public class GameManager : MonoBehaviour
         }
     }
 }
+

@@ -60,8 +60,18 @@ public class CharacterSelectionMenu : MonoBehaviour
         ChangeScreen();
     }
 
+    // Método para guardar el sprite del jugador 1 seleccionado
+    private void SelectPlayerHead()
+    {
+        if (gameManager != null && gameManager.players.Count > index)
+        {
+            gameManager.selectedHeadSprite = gameManager.players[index].image;
+        }
+    }
+
     public void SelectPlayer1()
     {
+        SelectPlayerHead();  // Guarda el sprite solo al seleccionar el jugador 1
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
