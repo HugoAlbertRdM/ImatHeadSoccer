@@ -6,7 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public List<Players> players;
-    public Sprite selectedHeadSprite;  // Añadir esta línea
+    public Sprite player1HeadSprite;  // Para el jugador 1
+    public Sprite player2HeadSprite;  // Para el jugador 2
+
+    public Sprite selectedHeadSprite; // ESTO IGUAL DA ERROR
 
     private void Awake()
     {
@@ -20,5 +23,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-}
 
+    public void SelectPlayer1(Sprite headSprite)
+    {
+        player1HeadSprite = headSprite;
+    }
+
+    public void SelectPlayer2(Sprite headSprite)
+    {
+        player2HeadSprite = headSprite;
+    }
+}

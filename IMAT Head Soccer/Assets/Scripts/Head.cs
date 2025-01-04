@@ -13,11 +13,20 @@ public class Head : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         // Verifica si hay un sprite seleccionado y lo aplica
-        if (GameManager.Instance != null && GameManager.Instance.selectedHeadSprite != null)
+        if (GameManager.Instance != null)
         {
-            spriteRenderer.sprite = GameManager.Instance.selectedHeadSprite;
+            SpriteRenderer headRenderer = GetComponent<SpriteRenderer>();
+
+            if (gameObject.name == "Player1" && GameManager.Instance.player1HeadSprite != null)
+            {
+                headRenderer.sprite = GameManager.Instance.player1HeadSprite;
+            }
+            else if (gameObject.name == "Player2" && GameManager.Instance.player2HeadSprite != null)
+            {
+                headRenderer.sprite = GameManager.Instance.player2HeadSprite;
+            }
         }
+
     }
 }
-
 

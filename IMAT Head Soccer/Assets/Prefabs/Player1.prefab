@@ -197,7 +197,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826389771224363202}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -398,8 +398,9 @@ GameObject:
   - component: {fileID: 2822349434343776399}
   - component: {fileID: 6966480774964016263}
   - component: {fileID: 2771294533070164072}
+  - component: {fileID: 2384434744104609058}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -484,7 +485,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpingForce: 250
-  headObject: {fileID: 0}
+  headObject: {fileID: 710900893111482779}
+--- !u!114 &2384434744104609058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847402739957021000}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ff1e15987ba0c418823251b48410f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpingForce: 0
+  headObject: {fileID: 710900893111482779}
 --- !u!1 &7802999275283117629
 GameObject:
   m_ObjectHideFlags: 0
