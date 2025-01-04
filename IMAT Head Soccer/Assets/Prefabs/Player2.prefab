@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 710900893111482779}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0043129916, y: 0.004412902, z: -0.011467998, w: 0.99991524}
-  m_LocalPosition: {x: -0.21, y: -0.01, z: 0}
+  m_LocalPosition: {x: 0, y: -0.01, z: 0}
   m_LocalScale: {x: 0.9239489, y: 0.9266838, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6137205375420545922}
   - component: {fileID: 6220574539032393673}
   m_Layer: 0
-  m_Name: Shoe2
+  m_Name: Shoe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 1826389771224363202}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0075189457, w: 0.99997175}
-  m_LocalPosition: {x: 0.35, y: -1.34, z: 0.04265854}
+  m_LocalPosition: {x: 0, y: -1.34, z: 0.04265854}
   m_LocalScale: {x: 1, y: 0.9995, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -485,6 +485,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpingForce: 250
   headObject: {fileID: 710900893111482779}
+  startPositionPlayer1: {x: -6, y: -2}
+  startPositionPlayer2: {x: 6, y: -2}
 --- !u!1 &7802999275283117629
 GameObject:
   m_ObjectHideFlags: 0

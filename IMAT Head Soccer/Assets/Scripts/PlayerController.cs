@@ -40,9 +40,19 @@ public class PlayerController : MonoBehaviour
         else if (gameObject.name == "Player2")
         {
             transform.position = startPositionPlayer2;
+
+            // Reflejar el zapato de Player2 para que mire hacia la izquierda
+            if (shoe != null)
+            {
+                Vector3 shoeScale = shoe.transform.localScale;
+                shoeScale.x = -Mathf.Abs(shoeScale.x);  // Asegurarse de que la escala sea negativa en X
+                shoe.transform.localScale = shoeScale;
+
+                Debug.Log("El zapato de Player2 se ha reflejado hacia la izquierda.");
+            }
         }
 
-        // Cambiar la cabeza según el nombre del jugador
+        // Cambiar la cabeza según el jugador
         if (headObject != null && GameManager.Instance != null)
         {
             SpriteRenderer headRenderer = headObject.GetComponent<SpriteRenderer>();
@@ -57,6 +67,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
 
     // Update is called once per frame
     void Update()
@@ -100,7 +111,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
@@ -119,13 +129,22 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        // Activar animación de disparo
-        animator.SetTrigger("shootOnce");
+        if (animator != null)
+        {
+            animator.SetTrigger("shootOnce");
+        }
 
-        // Si el jugador está cerca del balón, dispara
         if (IsNearBall())
         {
-            ballScript?.ShootBall();
+            // Pasamos true si es Player2
+            bool isPlayer2 = gameObject.name == "Player2";
+            ballScript.ShootBall(isPlayer2);
+
+            Debug.Log(gameObject.name + " ha disparado el balón hacia " + (isPlayer2 ? "izquierda" : "derecha"));
+        }
+        else
+        {
+            Debug.Log("Fuera de rango para chutar.");
         }
     }
 }

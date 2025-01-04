@@ -16,16 +16,24 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void ShootBall()
+    // Método modificado para disparar hacia la izquierda o derecha
+    public void ShootBall(bool isPlayer2 = false)
     {
         float angle = Random.Range(15f, 75f);
-
         float angleInRadians = angle * Mathf.Deg2Rad;
-        Vector2 shootDirection = new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians));
 
+        // Determinar dirección del disparo
+        float direction = isPlayer2 ? -1f : 1f;  // Player2 dispara a la izquierda
+
+        // Calcular dirección del disparo
+        Vector2 shootDirection = new Vector2(Mathf.Cos(angleInRadians) * direction, Mathf.Sin(angleInRadians));
+
+        // Aplicar la fuerza al balón
         rigitbody2D.velocity = shootDirection * shootForce;
+
+        Debug.Log("Balón disparado hacia " + (isPlayer2 ? "izquierda" : "derecha"));
     }
 }
