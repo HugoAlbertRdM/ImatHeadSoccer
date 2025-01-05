@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FootballMatch.unity
     guid: a80256a69fe206d428e635604c7f5f6f
+  - enabled: 1
+    path: Assets/Scenes/FinalMenu.unity
+    guid: b0539862c73ddfd4fa39be5c8c73e651
   m_configObjects: {}

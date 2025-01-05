@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
@@ -181,12 +181,6 @@ public class PlayerController : MonoBehaviour
             // Pasamos true si es Player2
             bool isPlayer2 = gameObject.name == "Player2";
             ballScript.ShootBall(shootForce, isPlayer2);
-
-            Debug.Log(gameObject.name + " ha disparado el balón hacia " + (isPlayer2 ? "izquierda" : "derecha"));
-        }
-        else
-        {
-            Debug.Log("Fuera de rango para chutar.");
         }
     }
 

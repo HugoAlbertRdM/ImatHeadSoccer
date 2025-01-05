@@ -6,8 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public List<Player> players;
-    public Player player1;  // Para el jugador 1
-    public Player player2;  // Para el jugador 2
+    public Player player1; 
+    public Player player2;
 
     private void Awake()
     {

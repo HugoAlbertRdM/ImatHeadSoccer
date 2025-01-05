@@ -10,6 +10,10 @@ TagManager:
   - Player2
   - GoalZoneLeft
   - GoalZoneRight
+  - Shoe
+  - Head
+  - Head1
+  - Head2
   layers:
   - Default
   - TransparentFX

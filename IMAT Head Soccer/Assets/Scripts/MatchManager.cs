@@ -1,5 +1,4 @@
-
-
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro; // Si usas TextMeshPro
 
@@ -17,6 +16,7 @@ public class MatchManager : MonoBehaviour
     private int rightScore = 0; // Puntuación del jugador 2
     private float timeRemaining;
 
+    public static string result;
     private bool isMatchActive = true;
 
     private GameObject player1;
@@ -138,13 +138,19 @@ public class MatchManager : MonoBehaviour
         if (leftScore > rightScore)
         {
             winnerMessage = "Left Player Wins!";
+            result = "P1";
         }
         else if (rightScore > leftScore)
         {
             winnerMessage = "Right Player Wins!";
+            result = "P2";
+        }
+        else
+        {
+            result = "D";
         }
 
         Debug.Log(winnerMessage);
-        // Puedes añadir lógica para mostrar un mensaje o reiniciar el juego.
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
