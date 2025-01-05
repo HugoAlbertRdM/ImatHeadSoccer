@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private int jumpCount = 0;
     private int maxJumps = 2;
     private float proximityThreshold = 2f;
+    private bool isAIPlayer2;
 
     // Components
     private Rigidbody2D rigitbody2D;
@@ -65,48 +66,90 @@ public class PlayerController : MonoBehaviour
                 headRenderer.sprite = GameManager.Instance.player2.image;
             }
         }
+
+        // Determinar si el jugador es controlado por IA o no
+        string gameMode = PlayerPrefs.GetString("GameMode", "SinglePlayer");
+        if (gameObject.name == "Player2" && gameMode == "SinglePlayer")
+        {
+            isAIPlayer2 = true;
+        }
+        else
+        {
+            isAIPlayer2 = false;
+        }
     }
 
-
-    // Update is called once per frame
     void Update()
     {
-        // Player 1 Controls
         if (gameObject.name == "Player1")
         {
-            float moveInput = Input.GetAxis("Horizontal");
-            rigitbody2D.velocity = new Vector2(moveInput * moveSpeed, rigitbody2D.velocity.y);
-
-            if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < maxJumps)
+            Player1Controls();
+        }
+        else if (gameObject.name == "Player2")
+        {
+            if (isAIPlayer2)
             {
-                rigitbody2D.AddForce(new Vector2(0, jumpingForce));
-                jumpCount++;
+                AIControls();
             }
-
-            // Disparo para Player1 (Espacio)
-            if (Input.GetKeyDown(KeyCode.Space))
+            else
             {
-                Shoot();
+                Player2Controls();
             }
         }
+    }
 
-        // Player 2 Controls (WASD)
-        if (gameObject.name == "Player2")
+    private void Player1Controls()
+    {
+        float moveInput = Input.GetAxis("Horizontal");
+        rigitbody2D.velocity = new Vector2(moveInput * moveSpeed, rigitbody2D.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < maxJumps)
         {
-            float moveInput = Input.GetAxis("Horizontal2");
-            rigitbody2D.velocity = new Vector2(moveInput * moveSpeed, rigitbody2D.velocity.y);
+            rigitbody2D.AddForce(new Vector2(0, jumpingForce));
+            jumpCount++;
+        }
 
-            if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumps)
-            {
-                rigitbody2D.AddForce(new Vector2(0, jumpingForce));
-                jumpCount++;
-            }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
+    }
 
-            // Disparo para Player2 (Letra E)
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Shoot();
-            }
+    private void Player2Controls()
+    {
+        float moveInput = Input.GetAxis("Horizontal2");
+        rigitbody2D.velocity = new Vector2(moveInput * moveSpeed, rigitbody2D.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumps)
+        {
+            rigitbody2D.AddForce(new Vector2(0, jumpingForce));
+            jumpCount++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Shoot();
+        }
+    }
+
+    private void AIControls()
+    {
+        // Moverse hacia el balón
+        Vector2 ballPosition = ballGameObject.transform.position;
+        float direction = ballPosition.x > transform.position.x ? 1 : -1;
+        rigitbody2D.velocity = new Vector2(direction * moveSpeed, rigitbody2D.velocity.y);
+
+        // Saltar si el balón está cerca y más alto
+        if (Mathf.Abs(ballPosition.x - transform.position.x) < proximityThreshold && ballPosition.y > transform.position.y && jumpCount < maxJumps)
+        {
+            rigitbody2D.AddForce(new Vector2(0, jumpingForce));
+            jumpCount++;
+        }
+
+        // Disparar si está cerca del balón
+        if (IsNearBall())
+        {
+            Shoot();
         }
     }
 
