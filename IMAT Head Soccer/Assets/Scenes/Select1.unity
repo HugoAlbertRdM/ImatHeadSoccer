@@ -289,6 +289,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e88f23aa936fd041a873fecfe5453b7, type: 2}
   - {fileID: 11400000, guid: ade0b04d8656c1848a25d7ebaaff3bd3, type: 2}
   - {fileID: 11400000, guid: 16091140e9e76be42afb3da868283514, type: 2}
+  - {fileID: 11400000, guid: db3524b37ee8a1d478efe942b7670c88, type: 2}
+  player1HeadSprite: {fileID: 0}
+  player2HeadSprite: {fileID: 0}
+  selectedHeadSprite: {fileID: 0}
 --- !u!4 &514551178
 Transform:
   m_ObjectHideFlags: 0
@@ -961,7 +965,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7ed8a54d9932a534fa60e6fcdb690d75, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0406c041c07efe44bbd75a9dce1a5264, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1091,7 +1095,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1118015445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d78f2dc8c96c0d4b9021f216fc72e82, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f37beab89336b84592827c617ba4f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 948774054}

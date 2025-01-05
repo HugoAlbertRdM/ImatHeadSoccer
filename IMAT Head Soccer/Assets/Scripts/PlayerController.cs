@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float jumpingForce;
+    public float jumpingForce = 150f;
     private float moveSpeed = 5f;
+    public float shootForce = 10f;
     private int jumpCount = 0;
     private int maxJumps = 2;
     private float proximityThreshold = 2f;
@@ -32,25 +33,7 @@ public class PlayerController : MonoBehaviour
         ballScript = ballGameObject != null ? ballGameObject.GetComponent<Ball>() : null;
         animator = GetComponent<Animator>();
 
-        // Posicionar jugadores en lados opuestos
-        if (gameObject.name == "Player1")
-        {
-            transform.position = startPositionPlayer1;
-        }
-        else if (gameObject.name == "Player2")
-        {
-            transform.position = startPositionPlayer2;
-
-            // Reflejar el zapato de Player2 para que mire hacia la izquierda
-            if (shoe != null)
-            {
-                Vector3 shoeScale = shoe.transform.localScale;
-                shoeScale.x = -Mathf.Abs(shoeScale.x);  // Asegurarse de que la escala sea negativa en X
-                shoe.transform.localScale = shoeScale;
-
-                Debug.Log("El zapato de Player2 se ha reflejado hacia la izquierda.");
-            }
-        }
+        StartPosition();
 
         // Cambiar la cabeza según el jugador
         if (headObject != null && GameManager.Instance != null)
@@ -138,13 +121,26 @@ public class PlayerController : MonoBehaviour
         {
             // Pasamos true si es Player2
             bool isPlayer2 = gameObject.name == "Player2";
-            ballScript.ShootBall(isPlayer2);
+            ballScript.ShootBall(shootForce, isPlayer2);
 
             Debug.Log(gameObject.name + " ha disparado el balón hacia " + (isPlayer2 ? "izquierda" : "derecha"));
         }
         else
         {
             Debug.Log("Fuera de rango para chutar.");
+        }
+    }
+
+    public void StartPosition()
+    {
+        // Posicionar jugadores en lados opuestos
+        if (gameObject.name == "Player1")
+        {
+            transform.position = startPositionPlayer1;
+        }
+        else if (gameObject.name == "Player2")
+        {
+            transform.position = startPositionPlayer2;
         }
     }
 }

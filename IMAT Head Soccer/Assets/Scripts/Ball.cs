@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public float shootForce = 10f;
     private Rigidbody2D rigitbody2D;
 
     // Start is called before the first frame update
@@ -13,14 +12,9 @@ public class Ball : MonoBehaviour
         rigitbody2D = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     // Método modificado para disparar hacia la izquierda o derecha
-    public void ShootBall(bool isPlayer2 = false)
+    public void ShootBall(float shootForce, bool isPlayer2 = false)
     {
         float angle = Random.Range(15f, 75f);
         float angleInRadians = angle * Mathf.Deg2Rad;

@@ -9,6 +9,7 @@ public class Players : ScriptableObject
     public GameObject footballPlayer;
     public Sprite image;
     public string name;
-    
-
+    public float jumpingForce;
+    public float moveSpeed;
+    public float shootForce;
 }

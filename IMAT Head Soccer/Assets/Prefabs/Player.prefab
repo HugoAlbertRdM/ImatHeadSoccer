@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3451675328791134762}
   - component: {fileID: 1218400666899473945}
   m_Layer: 0
-  m_Name: Head2
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710900893111482779}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0043129916, y: 0.004412902, z: -0.011467998, w: 0.99991524}
-  m_LocalPosition: {x: 0, y: -0.01, z: 0}
+  m_LocalRotation: {x: 0.0013461948, y: 0.0043789693, z: -0.011455149, w: 0.99992394}
+  m_LocalPosition: {x: -0.2, y: 0, z: 0}
   m_LocalScale: {x: 0.9239489, y: 0.9266838, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1676392535864525587}
-  m_LocalEulerAnglesHint: {x: 0.5, y: 0.5, z: -1.312}
+  m_LocalEulerAnglesHint: {x: 0.16, y: 0.5, z: -1.312}
 --- !u!212 &3451675328791134762
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -184,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 1826389771224363202}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0075189457, w: 0.99997175}
-  m_LocalPosition: {x: 0, y: -1.34, z: 0.04265854}
+  m_LocalPosition: {x: 0.35, y: -1.34, z: 0.04265854}
   m_LocalScale: {x: 1, y: 0.9995, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -398,8 +398,9 @@ GameObject:
   - component: {fileID: 2822349434343776399}
   - component: {fileID: 6966480774964016263}
   - component: {fileID: 2771294533070164072}
+  - component: {fileID: 2384434744104609058}
   m_Layer: 0
-  m_Name: Player2
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,6 +488,30 @@ MonoBehaviour:
   headObject: {fileID: 710900893111482779}
   startPositionPlayer1: {x: -6, y: -2}
   startPositionPlayer2: {x: 6, y: -2}
+  startPositionHead1: {x: -6, y: -2}
+  startPositionHead2: {x: 6, y: -2}
+  startPositionFoot1: {x: -6, y: -2}
+  startPositionFoot2: {x: 6, y: -2}
+--- !u!114 &2384434744104609058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847402739957021000}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ff1e15987ba0c418823251b48410f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpingForce: 0
+  headObject: {fileID: 710900893111482779}
+  startPositionPlayer1: {x: -6, y: -2}
+  startPositionPlayer2: {x: 6, y: -2}
+  startPositionHead1: {x: -6, y: -2}
+  startPositionHead2: {x: 6, y: -2}
+  startPositionFoot1: {x: -6, y: -2}
+  startPositionFoot2: {x: 6, y: -2}
 --- !u!1 &7802999275283117629
 GameObject:
   m_ObjectHideFlags: 0
