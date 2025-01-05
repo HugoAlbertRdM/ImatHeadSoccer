@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float jumpingForce = 150f;
-    private float moveSpeed = 5f;
-    public float shootForce = 10f;
     private int jumpCount = 0;
     private int maxJumps = 2;
     private float proximityThreshold = 2f;
@@ -18,6 +15,11 @@ public class PlayerController : MonoBehaviour
     private GameObject ballGameObject;
     private Ball ballScript;
     private Animator animator;
+
+    // Player stats
+    private float jumpingForce;
+    private float moveSpeed;
+    private float shootForce;
 
     [SerializeField] private GameObject headObject;  // Referencia a la cabeza para cambiar el sprite
     [SerializeField] private Vector2 startPositionPlayer1 = new Vector2(-6f, -2f);  // Posición inicial Player 1
@@ -33,6 +35,20 @@ public class PlayerController : MonoBehaviour
         ballScript = ballGameObject != null ? ballGameObject.GetComponent<Ball>() : null;
         animator = GetComponent<Animator>();
 
+        // Asignar las características del jugador
+        if (gameObject.name == "Player1" && GameManager.Instance.player1 != null)
+        {
+            jumpingForce = GameManager.Instance.player1.jumpingForce;
+            moveSpeed = GameManager.Instance.player1.moveSpeed;
+            shootForce = GameManager.Instance.player1.shootForce;
+        }
+        else if (gameObject.name == "Player2" && GameManager.Instance.player2 != null)
+        {
+            jumpingForce = GameManager.Instance.player2.jumpingForce;
+            moveSpeed = GameManager.Instance.player2.moveSpeed;
+            shootForce = GameManager.Instance.player2.shootForce;
+        }
+
         StartPosition();
 
         // Cambiar la cabeza según el jugador
@@ -40,13 +56,13 @@ public class PlayerController : MonoBehaviour
         {
             SpriteRenderer headRenderer = headObject.GetComponent<SpriteRenderer>();
 
-            if (gameObject.name == "Player1" && GameManager.Instance.player1HeadSprite != null)
+            if (gameObject.name == "Player1" && GameManager.Instance.player1 != null)
             {
-                headRenderer.sprite = GameManager.Instance.player1HeadSprite;
+                headRenderer.sprite = GameManager.Instance.player1.image;
             }
-            else if (gameObject.name == "Player2" && GameManager.Instance.player2HeadSprite != null)
+            else if (gameObject.name == "Player2" && GameManager.Instance.player2 != null)
             {
-                headRenderer.sprite = GameManager.Instance.player2HeadSprite;
+                headRenderer.sprite = GameManager.Instance.player2.image;
             }
         }
     }

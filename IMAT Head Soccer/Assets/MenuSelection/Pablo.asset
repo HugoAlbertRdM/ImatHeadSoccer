@@ -15,6 +15,6 @@ MonoBehaviour:
   footballPlayer: {fileID: 0}
   image: {fileID: 21300000, guid: 07363770ce7f73d4b8e9e694b1780fbd, type: 3}
   name: Pablo
-  jumpingForce: 100
+  jumpingForce: 150
   moveSpeed: 5
   shootForce: 15

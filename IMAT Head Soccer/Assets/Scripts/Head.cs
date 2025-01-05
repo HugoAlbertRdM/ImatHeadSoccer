@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 public class Head : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
@@ -17,16 +16,15 @@ public class Head : MonoBehaviour
         {
             SpriteRenderer headRenderer = GetComponent<SpriteRenderer>();
 
-            if (gameObject.name == "Player1" && GameManager.Instance.player1HeadSprite != null)
+            if (gameObject.name == "Player1" && GameManager.Instance.player1 != null)
             {
-                headRenderer.sprite = GameManager.Instance.player1HeadSprite;
+                headRenderer.sprite = GameManager.Instance.player1.image;
             }
-            else if (gameObject.name == "Player2" && GameManager.Instance.player2HeadSprite != null)
+            else if (gameObject.name == "Player2" && GameManager.Instance.player2 != null)
             {
-                headRenderer.sprite = GameManager.Instance.player2HeadSprite;
+                headRenderer.sprite = GameManager.Instance.player2.image;
             }
         }
 
     }
 }
-

@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName ="NewPlayer", menuName = "Player")]
 
-public class Players : ScriptableObject
+public class Player : ScriptableObject
 {
     public GameObject footballPlayer;
     public Sprite image;

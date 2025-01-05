@@ -3,12 +3,15 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class CharacterSelectionMenu : MonoBehaviour
+public class PlayerSelectionMenu : MonoBehaviour
 {
     private int index;
 
     [SerializeField] private Image image;
     [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI speed;
+    [SerializeField] private TextMeshProUGUI shoot;
+    [SerializeField] private TextMeshProUGUI jump;
     private GameManager gameManager;
 
     private void Start()
@@ -30,6 +33,9 @@ public class CharacterSelectionMenu : MonoBehaviour
         PlayerPrefs.SetInt("PlayerIndex", index);
         image.sprite = gameManager.players[index].image;
         nameText.text = gameManager.players[index].name;
+        speed.text = gameManager.players[index].moveSpeed.ToString();
+        shoot.text = gameManager.players[index].shootForce.ToString();
+        jump.text = gameManager.players[index].jumpingForce.ToString();
     }
 
     public void NextCharacter()
@@ -61,32 +67,32 @@ public class CharacterSelectionMenu : MonoBehaviour
     }
 
     // Guarda el sprite seleccionado para el Jugador 1
-    private void SelectPlayer1Head()
+    private void Player1()
     {
         if (gameManager != null && gameManager.players.Count > index)
         {
-            gameManager.player1HeadSprite = gameManager.players[index].image;
+            gameManager.player1 = gameManager.players[index];
         }
     }
 
     // Guarda el sprite seleccionado para el Jugador 2
-    private void SelectPlayer2Head()
+    private void Player2()
     {
         if (gameManager != null && gameManager.players.Count > index)
         {
-            gameManager.player2HeadSprite = gameManager.players[index].image;
+            gameManager.player2 = gameManager.players[index];
         }
     }
 
     public void SelectPlayer1()
     {
-        SelectPlayer1Head();  // Guarda la cabeza del Jugador 1
+        Player1();  // Guarda la cabeza del Jugador 1
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void StartGame()
     {
-        SelectPlayer2Head();  // Guarda la cabeza del Jugador 2
+        Player2();  // Guarda la cabeza del Jugador 2
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

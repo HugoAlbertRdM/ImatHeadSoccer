@@ -5,11 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public List<Players> players;
-    public Sprite player1HeadSprite;  // Para el jugador 1
-    public Sprite player2HeadSprite;  // Para el jugador 2
-
-    public Sprite selectedHeadSprite; // ESTO IGUAL DA ERROR
+    public List<Player> players;
+    public Player player1;  // Para el jugador 1
+    public Player player2;  // Para el jugador 2
 
     private void Awake()
     {
@@ -24,13 +22,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SelectPlayer1(Sprite headSprite)
+    public void SelectPlayer1(Player player)
     {
-        player1HeadSprite = headSprite;
+        player1 = player;
     }
 
-    public void SelectPlayer2(Sprite headSprite)
+    public void SelectPlayer2(Player player)
     {
-        player2HeadSprite = headSprite;
+        player2 = player;
     }
 }
