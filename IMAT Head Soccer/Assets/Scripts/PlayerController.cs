@@ -134,22 +134,44 @@ public class PlayerController : MonoBehaviour
 
     private void AIControls()
     {
-        // Moverse hacia el balón
+        // Obtener la posición del balón
         Vector2 ballPosition = ballGameObject.transform.position;
-        float direction = ballPosition.x > transform.position.x ? 1 : -1;
-        rigitbody2D.velocity = new Vector2(direction * moveSpeed, rigitbody2D.velocity.y);
 
-        // Saltar si el balón está cerca y más alto
-        if (Mathf.Abs(ballPosition.x - transform.position.x) < proximityThreshold && ballPosition.y > transform.position.y && jumpCount < maxJumps)
+        // Determinar la dirección hacia el balón
+        float direction = ballPosition.x > transform.position.x ? 1 : -1;
+
+        // Movimiento horizontal hacia el balón
+        if (Mathf.Abs(ballPosition.x - transform.position.x) > proximityThreshold) // Si el balón está lejos
+        {
+            rigitbody2D.velocity = new Vector2(direction * moveSpeed, rigitbody2D.velocity.y);
+        }
+        else
+        {
+            // Detenerse cuando esté cerca del balón
+            rigitbody2D.velocity = new Vector2(0, rigitbody2D.velocity.y);
+        }
+
+        // Saltar si el balón está más alto y la IA no ha alcanzado el máximo de saltos
+        if (ballPosition.y > transform.position.y + 0.5f && jumpCount < maxJumps)
         {
             rigitbody2D.AddForce(new Vector2(0, jumpingForce));
             jumpCount++;
         }
 
-        // Disparar si está cerca del balón
+        // Intentar disparar si está cerca del balón
         if (IsNearBall())
         {
             Shoot();
+        }
+
+        // Ajustar la posición para no quedarse atascado en los límites del campo
+        if (transform.position.x < -7f) // Límite izquierdo
+        {
+            rigitbody2D.velocity = new Vector2(moveSpeed, rigitbody2D.velocity.y); // Moverse hacia la derecha
+        }
+        else if (transform.position.x > 7f) // Límite derecho
+        {
+            rigitbody2D.velocity = new Vector2(-moveSpeed, rigitbody2D.velocity.y); // Moverse hacia la izquierda
         }
     }
 
